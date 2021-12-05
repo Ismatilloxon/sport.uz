@@ -17,6 +17,17 @@ struct Progress: View {
     ]
     let bal = [1000,999,995,996,991,800,700,600,500,400,399,389,366,366,355,344,343,333,321,320,311,300]
     
+    let listOfData1 = [
+        UserData(name: "Rustam Mamadaliyev", image: "AvatarBig"),
+        UserData(name: "Ismatillo Marufkhonov", image: "myPhoto"),
+        UserData(name: "Aliyev Ali", image: "AvatarBig1"),
+        UserData(name: "Shaxobiddin Zoirov", image: "AvatarBig2"),
+        UserData(name: "Parizoda Kadirxanova", image: "AvatarBig3"),
+        UserData(name: "Sherzodxon Kadirxanov", image: "AvatarBig4"),
+        UserData(name: "Timur Xasanov", image: "AvatarBig1"),
+        
+    ]
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ScrollView {
@@ -29,7 +40,7 @@ struct Progress: View {
                 Text("By weight").tag(1)
             }.frame(width: 250)
                 .pickerStyle(SegmentedPickerStyle())
-            if mode == 0{
+            if mode == 0 {
             MouthCarusel(categoryNames: ["15 yoshgacha","17 yoshgacha","20 yoshgacha","25 yoshgacha","O'zbekiston bo'yicha"], childGenderMode: .blue, index: $index)
                 listOfData
             } else {
@@ -57,7 +68,7 @@ struct Progress_Previews: PreviewProvider {
 extension Progress {
     private var listOfData: some View {
         
-        ForEach(1..<15, id: \.self) {index in
+        ForEach(0..<listOfData1.count, id: \.self) { index in
             Button(action: {
                 
             }) {
@@ -65,11 +76,11 @@ extension Progress {
                     Text("\(index)")
                         .font(.system(size: 25))
                         .foregroundColor(.black)
-                    Image("AvatarBig2")
+                    Image(listOfData1[index].image)
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 50, height: 50)
-                    Text("Ismatillo")
+                    Text(listOfData1[index].name)
                         .foregroundColor(.black)
                         Spacer()
                     Text("\(bal[index]) bal")
